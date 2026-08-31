@@ -27,7 +27,7 @@ on:
         type: string
 
 env:
-  IMMORTALWRT_VERSION: '23.05.7'
+  IMMORTALWRT_VERSION: '23.05'
   TARGET_DEVICE: 'jdcloud_re-sp-01b'
 
 jobs:
@@ -50,6 +50,8 @@ jobs:
       - name: 下载 ImmortalWrt 源码
         run: |
           git clone --depth 1 -b openwrt-${{ env.IMMORTALWRT_VERSION }} \
+            https://github.com/immortalwrt/immortalwrt.git immortalwrt 2>&1 || \
+          git clone --depth 1 -b master \
             https://github.com/immortalwrt/immortalwrt.git immortalwrt
 
       - name: 更新 feeds
